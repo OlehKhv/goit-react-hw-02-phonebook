@@ -64,7 +64,7 @@ export class Form extends Component {
                     placeholder="📞   222-22-22"
                 />
 
-                <ButtonAdd type="submit">Add contact</ButtonAdd>
+                <ButtonAdd type="submit">➕ Add contact</ButtonAdd>
             </PhonebookForm>
         );
     }

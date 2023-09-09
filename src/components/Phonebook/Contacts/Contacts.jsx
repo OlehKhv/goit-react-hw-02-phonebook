@@ -38,13 +38,13 @@ export class Contacts extends Component {
                                 return (
                                     <ContactItem key={id}>
                                         <ContactText>
-                                            {name}: {number}
+                                            🧑 {name}: {number}
                                         </ContactText>
                                         <DeleteButton
                                             onClick={handleDeleteContact}
                                             data-id={id}
                                         >
-                                            Delete
+                                            ❌ Delete
                                         </DeleteButton>
                                     </ContactItem>
                                 );
