@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { NotificationText } from './Contacts.styled';
 
 export class Notification extends Component {
     static propTypes = { message: PropTypes.string.isRequired };
 
     render() {
-        return <h4>{this.props.message}</h4>;
+        return <NotificationText>{this.props.message}</NotificationText>;
     }
 }
 

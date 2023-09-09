@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Notification } from './Notification';
+import {
+    ContactItem,
+    ContactText,
+    DeleteButton,
+    SecondTitle,
+} from './Contacts.styled';
 
 export class Contacts extends Component {
     static propTypes = {
@@ -24,23 +30,23 @@ export class Contacts extends Component {
         const { contacts, filtredContacts, handleDeleteContact } = this.props;
         return (
             <div>
-                <h3>Contacts</h3>
+                <SecondTitle>Contacts</SecondTitle>
                 {contacts.length ? (
                     <ul>
                         {(filtredContacts ?? contacts).map(
                             ({ id, name, number }) => {
                                 return (
-                                    <li key={id}>
-                                        <p>
+                                    <ContactItem key={id}>
+                                        <ContactText>
                                             {name}: {number}
-                                        </p>
-                                        <button
+                                        </ContactText>
+                                        <DeleteButton
                                             onClick={handleDeleteContact}
                                             data-id={id}
                                         >
                                             Delete
-                                        </button>
-                                    </li>
+                                        </DeleteButton>
+                                    </ContactItem>
                                 );
                             }
                         )}

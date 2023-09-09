@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import Form from './Form/Form';
 import Contacts from './Contacts/Contacts';
 import Filter from './Filter/Filter';
+import { MainTitle } from './Section.styled';
 
 const INITIAL_STATE = {
     contacts: [],
@@ -62,7 +63,7 @@ export class Section extends Component {
         const { contacts, filter } = this.state;
         return (
             <section>
-                <h2>{this.props.title}</h2>
+                <MainTitle>{this.props.title}</MainTitle>
                 <Form handleAddContact={this.handleAddContact} />
                 <Filter
                     handleFilterContacts={this.handleFilterContacts}

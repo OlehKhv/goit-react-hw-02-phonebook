@@ -1,5 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { InputForm } from '../Form/Form.styled';
+import { ClearButton, FilterField, LabelSearchInput } from './Filter.styled';
 
 export class Filter extends Component {
     static propTypes = {
@@ -10,15 +12,24 @@ export class Filter extends Component {
     render() {
         const { handleDeleteAllContacts, handleFilterContacts } = this.props;
         return (
-            <>
-                <label>
-                    Search contact
-                    <input type="text" onChange={handleFilterContacts} />
-                </label>
-                <button onClick={handleDeleteAllContacts}>
-                    Clear phonebook
-                </button>
-            </>
+            <FilterField>
+                <div>
+                    <LabelSearchInput htmlFor="filter">
+                        🔍Search contact
+                    </LabelSearchInput>
+                    <InputForm
+                        name="filter"
+                        id="filter"
+                        type="text"
+                        placeholder="🙍‍♂️   Enter name"
+                        onChange={handleFilterContacts}
+                    />
+                </div>
+
+                <ClearButton onClick={handleDeleteAllContacts}>
+                    ❌ Clear phonebook
+                </ClearButton>
+            </FilterField>
         );
     }
 }
