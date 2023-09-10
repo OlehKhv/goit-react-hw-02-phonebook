@@ -13,10 +13,3 @@ export const FilterField = styled('div')(() => ({
     justifyContent: 'space-between',
     marginBottom: '40px',
 }));
-
-export const ClearButton = styled('button')`
-    font-size: 12px;
-    &:is(:hover, :focus) {
-        color: red;
-    }
-`;

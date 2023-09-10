@@ -8,7 +8,7 @@ import { MainTitle } from './Section.styled';
 
 const INITIAL_STATE = {
     contacts: [],
-    filter: null,
+    filter: '',
 };
 
 export class Section extends Component {
@@ -30,29 +30,22 @@ export class Section extends Component {
         }));
     };
 
-    handleDeleteContact = ({
-        target: {
-            dataset: { id },
-        },
-    }) => {
+    handleDeleteContact = id => {
         this.setState(prev => ({
             contacts: [...prev.contacts].filter(contact => contact.id !== id),
         }));
     };
 
     handleFilterContacts = ({ target: { value } }) => {
-        if (!value) {
-            this.setState({
-                filter: null,
-            });
-            return;
-        }
+        this.setState({ filter: value });
+    };
 
-        this.setState(prev => ({
-            filter: [...prev.contacts].filter(({ name }) =>
-                name.toLowerCase().includes(value.toLowerCase())
-            ),
-        }));
+    getFilteredContacts = () => {
+        const { contacts, filter } = this.state;
+
+        return contacts.filter(({ name }) =>
+            name.toLowerCase().includes(filter.toLowerCase())
+        );
     };
 
     handleDeleteAllContacts = () => {
@@ -60,19 +53,15 @@ export class Section extends Component {
     };
 
     render() {
-        const { contacts, filter } = this.state;
         return (
             <section>
                 <MainTitle>{this.props.title}</MainTitle>
                 <Form handleAddContact={this.handleAddContact} />
-                <Filter
-                    handleFilterContacts={this.handleFilterContacts}
-                    handleDeleteAllContacts={this.handleDeleteAllContacts}
-                />
+                <Filter handleFilterContacts={this.handleFilterContacts} />
                 <Contacts
-                    contacts={contacts}
-                    filtredContacts={filter}
+                    contacts={this.getFilteredContacts()}
                     handleDeleteContact={this.handleDeleteContact}
+                    handleDeleteAllContacts={this.handleDeleteAllContacts}
                 />
             </section>
         );
